@@ -2,8 +2,6 @@
 var currentDay= $("#currentDay");
 currentDay.text(moment().format("MMMM Do, YYYY"));
 
-
-
 // Create one row with time, text area & button using JQ
 var timeBlock= $(".time-block");
 var hour= $(".hour");
@@ -31,30 +29,45 @@ for (let i = 9; i < 18; i++) {
     // need to compare the hours of the rows with the current time--use if statements to compare time! then assign css elements! 
     // give the elements the classes they need ie time is passed, current time, 
     function assignColor(){
-        if (hour.text()===moment().format("H")){
+        if (hour.text()=== moment().format("H")){
             timeBlockEl.addClass("present")
-        } else if (hour.text() < moment().format("H")){
+        } else if (hour.text() > moment().format("H")){
             timeBlockEl.addClass("past")
         }else{
             timeBlockEl.addClass("future")
         }}; 
-        assignColor(i);
+
+        assignColor();
     
      // using a click event you can save user input into (grab input value to a var)------localstorage (setItem, getItem)---I need to be able to save the text to that row...onclick event/saving needs to be specific to that number button
 
-    // $(document).saveBtn.on("click", ".item", function(event) {
+   
+    // saveBtn.on("click", ".item", function(event) {
     //     event.preventDefault(); 
-    //     var toDoItem= $(`#i`)
+    //     var toDoItem= $(`#${i}`);
     //     console.log(toDoItem)
     // })
 
-    // // retrieve infor you saved in local storage  and then show it in the appriorate slot (an array?/object)
-    // localStorage.setItem("test", "my first test")
+   // // retrieve infor you saved in local storage  and then show it in the appriorate slot (an array?/object)
+    //  $(document).on("click", "saveBtn", function(event) {
+    //     event.preventDefault(); 
+    //     var toDoItemKey= $(`#${i}`);
+    //     var toDoItem= $(`#${i}`).val();
+    //     console.log(toDoItem);
+    //     localStorage.setItem(toDoItemKey, JSON.stringify(toDoItem));
+    //     var textFromLocalStorage=localStorage.getItem(toDoItemKey, toDoItem); 
+    //     textFromLocalStorage.forEach(score => {
+    //         toDoItemKey.append(toDoItem);
+    // })
+    // })
+
+    
+    
     // // Need different keys!
     // localStorage.setItem("test1", "notes1")
     // localStorage.setItem("test2", "notes2")
 
-    // var textFromLocalStorage=localStorage.getItem("test1")
+    // 
     // $(".first").text(textFromLocalStorage)
 
     // eval(“dynamic” + i + " = val[i]");
