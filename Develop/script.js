@@ -1,4 +1,4 @@
-// TODO: SHow the time on top of the calender, Using moment.js grab the time, and set the text of the P tag with the id of currentDay to be our time from moment.js
+// TODO: Show the time on top of the calender, Using moment.js grab the time, and set the text of the P tag with the id of currentDay to be our time from moment.js
 var currentDay= $("#currentDay");
 currentDay.text(moment().format("MMMM Do, YYYY"));
 
@@ -25,54 +25,40 @@ for (let i = 9; i < 18; i++) {
     timeBlockEl.append(hourEl, toDoEl, saveBtnEl);
     $(".container").append(timeBlockEl);
     
-
+    // console.log(typeof toDoEl.attr("id")); 
+    // console.log(typeof moment().format("H")); 
     // need to compare the hours of the rows with the current time--use if statements to compare time! then assign css elements! 
     // give the elements the classes they need ie time is passed, current time, 
     function assignColor(){
-        if (hour.text()=== moment().format("H")){
+        if (parseInt(toDoEl.attr("id"))=== parseInt(moment().format("H"))){
             timeBlockEl.addClass("present")
-        } else if (hour.text() > moment().format("H")){
+        } else if (parseInt(toDoEl.attr("id")) < parseInt(moment().format("H"))){
             timeBlockEl.addClass("past")
-        }else{
+        }else if (parseInt(toDoEl.attr("id")) > parseInt(moment().format("H"))){
             timeBlockEl.addClass("future")
+            console.log("future if ar")
         }}; 
 
         assignColor();
     
      // using a click event you can save user input into (grab input value to a var)------localstorage (setItem, getItem)---I need to be able to save the text to that row...onclick event/saving needs to be specific to that number button
 
-   
-    // saveBtn.on("click", ".item", function(event) {
-    //     event.preventDefault(); 
-    //     var toDoItem= $(`#${i}`);
-    //     console.log(toDoItem)
-    // })
+   // // retrieve info you saved in local storage  and then show it in the appriorate slot (an array?/object)
+     $(document).on("click", ".saveBtn", function(event) {
+        event.preventDefault(); 
+        console.log("you clicked me")
+        
+        // var toDoItemKey= $(`#${i}`);
+        // var toDoItem= $(`#${i}`).val();
+        // var textFromLocalStorage=localStorage.getItem(toDoItemKey, toDoItem);
 
-   // // retrieve infor you saved in local storage  and then show it in the appriorate slot (an array?/object)
-    //  $(document).on("click", "saveBtn", function(event) {
-    //     event.preventDefault(); 
-    //     var toDoItemKey= $(`#${i}`);
-    //     var toDoItem= $(`#${i}`).val();
     //     console.log(toDoItem);
     //     localStorage.setItem(toDoItemKey, JSON.stringify(toDoItem));
-    //     var textFromLocalStorage=localStorage.getItem(toDoItemKey, toDoItem); 
+    
     //     textFromLocalStorage.forEach(score => {
-    //         toDoItemKey.append(toDoItem);
+    //     toDoItem.append(toDoItemKey);
     // })
-    // })
-
-    
-    
-    // // Need different keys!
-    // localStorage.setItem("test1", "notes1")
-    // localStorage.setItem("test2", "notes2")
-
-    // 
-    // $(".first").text(textFromLocalStorage)
-
-    // eval(“dynamic” + i + " = val[i]");
+    })
 
 }   
-
-// need pull just the hour from moment.js to make sure the correct color is working
 console.log(moment().format("H"))
