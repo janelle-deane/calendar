@@ -47,26 +47,20 @@ for (let i = 9; i < 18; i++) {
      $(document).on("click", ".saveBtn", function(event) {
         event.preventDefault(); 
         console.log("you clicked me");
-        var toDoItemKey=parseInt(i);
-        var toDoItem= $(`#${i}`).val()
-        localStorage.setItem((toDoItemKey), JSON.stringify(toDoItem));
         
-    
-        //     textFromLocalStorage.forEach(score => {
-    //     toDoItem.append(toDoItemKey);
-    // })
+        var toDoItemKey=parseInt(i);
+        var toDoItem= $(`#${i}`).val();
+        localStorage.setItem((toDoItemKey), JSON.stringify(toDoItem));
+
+        returnInfo = () => {
+            for (var i = 0; i <9; i++){
+            var returnToDo=JSON.parse(toDoItem)
+            localStorage.getItem(toDoItemKey,returnToDo);
+            console.log(typeof returnToDo);
+             $(`#${i}`).append(returnToDo);
+            }
+        }
+        returnInfo();
     })
 
 }   
-// console.log(moment().format("H"))
-
-// // var toDoItemKey= $(`#${i}`);
-// // var toDoItem= $(`#${i}`).val(); ($("textarea").val());
-
-// var toDoItemKey= parseInt(toDoEl.attr("id"));
-// var toDoItem= JSON.parse(toDoEl.val());
-
-// var textFromLocalStorage=localStorage.getItem(toDoItemKey, toDoItem);
-
-// localStorage.setItem(toDoItemKey, JSON.stringify(toDoItem));
-// console.log(toDoItem);
