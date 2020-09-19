@@ -32,7 +32,7 @@ for (let i = 9; i < 18; i++) {
     function assignColor(){
         if (parseInt(toDoEl.attr("id"))=== parseInt(moment().format("H"))){
             timeBlockEl.addClass("present")
-        } else if (parseInt(toDoEl.attr("id")) < parseInt(moment().format("H"))){
+        } else if ((toDoEl.attr("id")) < parseInt(moment().format("H"))){
             timeBlockEl.addClass("past")
         }else if (parseInt(toDoEl.attr("id")) > parseInt(moment().format("H"))){
             timeBlockEl.addClass("future")
@@ -46,19 +46,27 @@ for (let i = 9; i < 18; i++) {
    // // retrieve info you saved in local storage  and then show it in the appriorate slot (an array?/object)
      $(document).on("click", ".saveBtn", function(event) {
         event.preventDefault(); 
-        console.log("you clicked me")
+        console.log("you clicked me");
+        var toDoItemKey=parseInt(i);
+        var toDoItem= $(`#${i}`).val()
+        localStorage.setItem((toDoItemKey), JSON.stringify(toDoItem));
         
-        // var toDoItemKey= $(`#${i}`);
-        // var toDoItem= $(`#${i}`).val();
-        // var textFromLocalStorage=localStorage.getItem(toDoItemKey, toDoItem);
-
-    //     console.log(toDoItem);
-    //     localStorage.setItem(toDoItemKey, JSON.stringify(toDoItem));
     
-    //     textFromLocalStorage.forEach(score => {
+        //     textFromLocalStorage.forEach(score => {
     //     toDoItem.append(toDoItemKey);
     // })
     })
 
 }   
-console.log(moment().format("H"))
+// console.log(moment().format("H"))
+
+// // var toDoItemKey= $(`#${i}`);
+// // var toDoItem= $(`#${i}`).val(); ($("textarea").val());
+
+// var toDoItemKey= parseInt(toDoEl.attr("id"));
+// var toDoItem= JSON.parse(toDoEl.val());
+
+// var textFromLocalStorage=localStorage.getItem(toDoItemKey, toDoItem);
+
+// localStorage.setItem(toDoItemKey, JSON.stringify(toDoItem));
+// console.log(toDoItem);
